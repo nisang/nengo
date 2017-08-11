@@ -11,7 +11,7 @@ For a summary of these principles, see the following example:
 
 .. toctree::
 
-   examples/nef_summary
+   examples/advanced/nef_summary
 
 The following examples give a more detailed presentation:
 
@@ -20,33 +20,33 @@ Principle 1: Representation
 
 .. toctree::
 
-   examples/single_neuron
-   examples/two_neurons
-   examples/many_neurons
-   examples/2d_representation
-   examples/combining
-   examples/addition
+   examples/basic/single_neuron
+   examples/basic/two_neurons
+   examples/basic/many_neurons
+   examples/basic/2d_representation
+   examples/basic/combining
+   examples/basic/addition
 
 Principle 2: Transformation
 ===========================
 
 .. toctree::
 
-   examples/communication_channel
-   examples/squaring
-   examples/multiplication
+   examples/basic/communication_channel
+   examples/basic/squaring
+   examples/basic/multiplication
 
 Principle 3: Dynamics
 =====================
 
 .. toctree::
 
-   examples/integrator
-   examples/controlled_integrator
-   examples/controlled_integrator2
-   examples/oscillator
-   examples/controlled_oscillator
-   examples/lorenz_attractor
+   examples/dynamics/integrator
+   examples/dynamics/controlled_integrator
+   examples/dynamics/controlled_integrator2
+   examples/dynamics/oscillator
+   examples/dynamics/controlled_oscillator
+   examples/dynamics/lorenz_attractor
 
 Putting these three principles together allows us to scale
 these examples up to larger networks that do more complex functions.
@@ -59,69 +59,69 @@ Nodes
 
 .. toctree::
 
-   examples/delay_node
+   examples/usage/delay_node
 
 Processes
 =========
 
 .. toctree::
 
-   examples/processes
+   examples/advanced/processes
 
 Ensembles
 =========
 
 .. toctree::
 
-   examples/tuning_curves
-   examples/izhikevich
+   examples/usage/tuning_curves
+   examples/advanced/izhikevich
 
 Connections
 ===========
 
 .. toctree::
 
-   examples/inhibitory_gating
-   examples/functions_and_tuning_curves
+   examples/advanced/inhibitory_gating
+   examples/advanced/functions_and_tuning_curves
 
 Learning
 ========
 
 .. toctree::
 
-   examples/learn_communication_channel
-   examples/learn_square
-   examples/learn_product
-   examples/learn_unsupervised
-   examples/learn_associations
+   examples/learning/learn_communication_channel
+   examples/learning/learn_square
+   examples/learning/learn_product
+   examples/learning/learn_unsupervised
+   examples/learning/learn_associations
 
 Networks
 ========
 
 .. toctree::
 
-   examples/ensemble_array
-   examples/matrix_multiplication
-   examples/basal_ganglia
-   examples/integrator_network
+   examples/networks/ensemble_array
+   examples/advanced/matrix_multiplication
+   examples/networks/basal_ganglia
+   examples/networks/integrator_network
 
 Semantic Pointer Architecture
 =============================
 
 .. toctree::
 
-   examples/associative_memory
-   examples/convolution
-   examples/question
-   examples/question_control
-   examples/question_memory
-   examples/spa_parser
-   examples/spa_sequence
-   examples/spa_sequence_routed
+   examples/spa/associative_memory
+   examples/spa/convolution
+   examples/spa/question
+   examples/spa/question_control
+   examples/spa/question_memory
+   examples/spa/spa_parser
+   examples/spa/spa_sequence
+   examples/spa/spa_sequence_routed
 
 Extending Nengo
 ===============
 
 .. toctree::
 
-   examples/rectified_linear
+   examples/usage/rectified_linear
