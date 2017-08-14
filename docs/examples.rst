@@ -10,6 +10,7 @@ The first set of examples explains these three principles:
 For a summary of these principles, see the following example:
 
 .. toctree::
+   :maxdepth: 1
 
    examples/advanced/nef_summary
 
@@ -19,6 +20,7 @@ Principle 1: Representation
 ===========================
 
 .. toctree::
+   :maxdepth: 1
 
    examples/basic/single_neuron
    examples/basic/two_neurons
@@ -31,6 +33,7 @@ Principle 2: Transformation
 ===========================
 
 .. toctree::
+   :maxdepth: 1
 
    examples/basic/communication_channel
    examples/basic/squaring
@@ -40,6 +43,7 @@ Principle 3: Dynamics
 =====================
 
 .. toctree::
+   :maxdepth: 1
 
    examples/dynamics/integrator
    examples/dynamics/controlled_integrator
@@ -58,6 +62,7 @@ Nodes
 =====
 
 .. toctree::
+   :maxdepth: 1
 
    examples/usage/delay_node
 
@@ -65,6 +70,7 @@ Processes
 =========
 
 .. toctree::
+   :maxdepth: 1
 
    examples/advanced/processes
 
@@ -72,6 +78,7 @@ Ensembles
 =========
 
 .. toctree::
+   :maxdepth: 1
 
    examples/usage/tuning_curves
    examples/advanced/izhikevich
@@ -80,6 +87,7 @@ Connections
 ===========
 
 .. toctree::
+   :maxdepth: 1
 
    examples/advanced/inhibitory_gating
    examples/advanced/functions_and_tuning_curves
@@ -88,6 +96,7 @@ Learning
 ========
 
 .. toctree::
+   :maxdepth: 1
 
    examples/learning/learn_communication_channel
    examples/learning/learn_square
@@ -99,6 +108,7 @@ Networks
 ========
 
 .. toctree::
+   :maxdepth: 1
 
    examples/networks/ensemble_array
    examples/advanced/matrix_multiplication
@@ -109,6 +119,7 @@ Semantic Pointer Architecture
 =============================
 
 .. toctree::
+   :maxdepth: 1
 
    examples/spa/associative_memory
    examples/spa/convolution
@@ -123,5 +134,6 @@ Extending Nengo
 ===============
 
 .. toctree::
+   :maxdepth: 1
 
    examples/usage/rectified_linear
