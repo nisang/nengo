@@ -109,7 +109,6 @@ html_static_path = ['_static']
 html_context = {
     'css_files': [os.path.join('_static', 'custom.css')],
 }
-html_use_smartypants = True
 htmlhelp_basename = 'Nengodoc'
 html_last_updated_fmt = ''  # Suppress 'Last updated on:' timestamp
 html_show_sphinx = False
