@@ -126,8 +126,10 @@ def hide_input():
                 var input_%(uuid)s;
                 if (cell.className.split(' ')[0] == "cell") {
                     for (var i = 0; i < cell.children.length; i++) {
-                        if (cell.children[i].className.split(' ')[0] == "input")
+                        if (cell.children[i].className.split(' ')[0]
+                            == "input") {
                             input_%(uuid)s = cell.children[i];
+                        }
                     }
                 } else {
                     input_%(uuid)s = cell.previousElementSibling;
@@ -149,7 +151,8 @@ def hide_input():
                 var link_%(uuid)s = $("a[id='%(uuid)s']");
                 var cell_%(uuid)s = link_%(uuid)s.parents("div.cell:first");
                 if (cell_%(uuid)s.length == 0) {
-                    cell_%(uuid)s = link_%(uuid)s.parents("div.nboutput:first");
+                    cell_%(uuid)s = link_%(uuid)s.parents(
+                        "div.nboutput:first");
                 }
                 var input_%(uuid)s = cell_%(uuid)s.children("div.input");
                 if (input_%(uuid)s.length == 0) {
