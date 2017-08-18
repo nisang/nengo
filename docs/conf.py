@@ -59,7 +59,6 @@ extensions = [
     'sphinx.ext.viewcode',
     'nbsphinx',
     'numpydoc',
-    'nengo.utils.docutils',
 ]
 
 # -- sphinx.ext.autodoc
