@@ -20,7 +20,7 @@ except ImportError:
 
 
 if 'NENGO_NBSPHINX_KERNEL' in os.environ:
-    nbsphinx_kernel_name = os.environ
+    nbsphinx_kernel_name = os.environ['NENGO_NBSPHINX_KERNEL']
 else:
     from jupyter_client.kernelspecapp import KernelSpecManager
     kernels = sorted(KernelSpecManager().find_kernel_specs())
