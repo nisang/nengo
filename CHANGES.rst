@@ -22,6 +22,11 @@ Release History
 2.5.1 (unreleased)
 ==================
 
+**Changed**
+
+- Updates to the documentation process to support recent Jupyter versions.
+  (`#1308 <https://github.com/nengo/nengo/issues/1308>`_,
+  `#1349 <https://github.com/nengo/nengo/pull/1349>`_)
 
 
 2.5.0 (July 24, 2017)
