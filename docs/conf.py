@@ -50,6 +50,7 @@ for dirpath, dirnames, _ in os.walk('examples'):
             f.write('[decoder_cache]\nenabled = False\n')
 
 
+needs_sphinx = '1.3'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
