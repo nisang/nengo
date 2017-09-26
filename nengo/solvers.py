@@ -31,7 +31,7 @@ class Solver(with_metaclass(DocstringInheritor, FrozenObject)):
         super(Solver, self).__init__()
         self.weights = weights
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         """Call the solver.
 
         Parameters
@@ -41,9 +41,8 @@ class Solver(with_metaclass(DocstringInheritor, FrozenObject)):
         Y : (n_eval_points, dimensions) array_like
             Matrix of the target decoded values for each of the D dimensions,
             at each of the evaluation points.
-        rng : `numpy.random.RandomState`, optional (Default: None)
-            A random number generator to use as required. If None,
-            the ``numpy.random`` module functions will be used.
+        rng : `numpy.random.RandomState`, optional (Default: `np.random`)
+            A random number generator to use as required.
         E : (dimensions, post.n_neurons) array_like, optional (Default: None)
             Array of post-population encoders. Providing this tells the solver
             to return an array of connection weights rather than decoders.
@@ -113,7 +112,7 @@ class Lstsq(Solver):
         super(Lstsq, self).__init__(weights=weights)
         self.rcond = rcond
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         tstart = time.time()
         Y = self.mul_encoders(Y, E)
         X, residuals2, rank, s = np.linalg.lstsq(A, Y, rcond=self.rcond)
@@ -159,9 +158,8 @@ class _LstsqNoiseSolver(Solver):
 class LstsqNoise(_LstsqNoiseSolver):
     """Least-squares solver with additive Gaussian white noise."""
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         tstart = time.time()
-        rng = np.random if rng is None else rng
         sigma = self.noise * A.max()
         A = A + rng.normal(scale=sigma, size=A.shape)
         X, info = self.solver(A, Y, 0, rng=rng)
@@ -172,9 +170,8 @@ class LstsqNoise(_LstsqNoiseSolver):
 class LstsqMultNoise(_LstsqNoiseSolver):
     """Least-squares solver with multiplicative white noise."""
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         tstart = time.time()
-        rng = np.random if rng is None else rng
         A = A + rng.normal(scale=self.noise, size=A.shape) * A
         X, info = self.solver(A, Y, 0, rng=rng)
         info['time'] = time.time() - tstart
@@ -215,7 +212,7 @@ class _LstsqL2Solver(Solver):
 class LstsqL2(_LstsqL2Solver):
     """Least-squares solver with L2 regularization."""
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         tstart = time.time()
         sigma = self.reg * A.max()
         X, info = self.solver(A, Y, sigma, rng=rng)
@@ -226,7 +223,7 @@ class LstsqL2(_LstsqL2Solver):
 class LstsqL2nz(_LstsqL2Solver):
     """Least-squares solver with L2 regularization on non-zero components."""
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         tstart = time.time()
         # Compute the equivalent noise standard deviation. This equals the
         # base amplitude (noise_amp times the overall max activation) times
@@ -279,7 +276,7 @@ class LstsqL1(Solver):
         self.l1 = l1
         self.l2 = l2
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         import sklearn.linear_model
         tstart = time.time()
         Y = self.mul_encoders(Y, E, copy=True)  # copy since 'fit' may modify Y
@@ -346,7 +343,7 @@ class LstsqDrop(Solver):
         self.solver1 = solver1
         self.solver2 = solver2
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         tstart = time.time()
         Y, m, n, _, matrix_in = format_system(A, Y)
 
@@ -402,7 +399,7 @@ class Nnls(Solver):
         assert scipy.optimize
         super(Nnls, self).__init__(weights=weights)
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         import scipy.optimize
 
         tstart = time.time()
@@ -477,7 +474,7 @@ class NnlsL2(Nnls):
         info = {'rmses': rmses(A, X, Y), 'residuals': residuals, 'time': t}
         return X if matrix_in or X.shape[1] > 1 else X.ravel(), info
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         return self._solve(A, Y, rng, E, sigma=self.reg * A.max())
 
 
@@ -491,7 +488,7 @@ class NnlsL2nz(NnlsL2):
     negative intercepts will never be silent, affecting output accuracy.
     """
 
-    def __call__(self, A, Y, rng=None, E=None):
+    def __call__(self, A, Y, rng=np.random, E=None):
         sigma = (self.reg * A.max()) * np.sqrt((A > 0).mean(axis=0))
         sigma[sigma == 0] = 1
         return self._solve(A, Y, rng, E, sigma=sigma)
