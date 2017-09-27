@@ -53,6 +53,9 @@ Release History
 - Fixed an issue in which multiple identical indices in a slice were ignored.
   (`#947 <https://github.com/nengo/nengo/issues/947>`_,
   `#1361 <https://github.com/nengo/nengo/pull/1361>`_)
+- Fixed an issue where the cache would not release its index lock on abnormal
+  termination of the Nengo process.
+  (`#1364 <https://github.com/nengo/nengo/pull/1364>`_)
 
 **Deprecated**
 
