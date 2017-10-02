@@ -17,4 +17,4 @@ build: false  # Not a C# project
 
 test_script:
   - python setup.py -q develop
-  - py.test nengo -v --durations=20
+  - pytest nengo -v --durations=20
